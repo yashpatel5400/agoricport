@@ -1,0 +1,27 @@
+{
+  "name": "agoricport",
+  "version": "1.0.0",
+  "description": "Port of Chainlink to Agoric",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yashpatel5400/agoricport.git"
+  },
+  "keywords": [
+    "chainlink",
+    "agoric",
+    "gitcoin"
+  ],
+  "author": "Yash Patel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yashpatel5400/agoricport/issues"
+  },
+  "homepage": "https://github.com/yashpatel5400/agoricport#readme",
+  "devDependencies": {
+    "hardhat": "^2.4.1"
+  }
+}
