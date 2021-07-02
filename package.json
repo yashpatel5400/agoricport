@@ -9,6 +9,7 @@
     "hardhat": "^2.4.1"
   },
   "dependencies": {
+    "@chainlink/contracts": "^0.2.0",
     "chainlink": "^0.8.2"
   }
 }

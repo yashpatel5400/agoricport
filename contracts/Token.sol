@@ -1,34 +1,33 @@
-pragma solidity ^0.7.0;
+pragma solidity ^0.6.0;
 
 import "hardhat/console.sol";
 
-contract Token {
-    string public name = "My Hardhat Token";
-    string public symbol = "MHT";
+import "@chainlink/contracts/src/v0.6/interfaces/AggregatorV3Interface.sol";
 
-    uint public totalSupply = 1000000;
+contract PriceConsumerV3 {
 
-    address public owner;
+    AggregatorV3Interface internal priceFeed;
 
-    mapping(address => uint256) balances;
-
-    constructor() {
-        balances[msg.sender] = totalSupply;
-        owner = msg.sender;
+    /**
+     * Network: Kovan
+     * Aggregator: ETH/USD
+     * Address: 0x9326BFA02ADD2366b30bacB125260Af641031331
+     */
+    constructor() public {
+        priceFeed = AggregatorV3Interface(0x9326BFA02ADD2366b30bacB125260Af641031331);
     }
 
-    function transfer(address to, uint256 amount) external {
-
-        console.log("Sender balance is %s tokens", balances[msg.sender]);
-        console.log("Sending %s -> %s", amount, to);
-
-        require(balances[msg.sender] >= amount, "Not enough tokens");
-
-        balances[msg.sender] -= amount;
-        balances[to] += amount;
-    }
-
-    function balanceOf(address account) external view returns (uint256) {
-        return balances[account];
+    /**
+     * Returns the latest price
+     */
+    function getThePrice() public view returns (int) {
+        (
+            uint80 roundID, 
+            int price,
+            uint startedAt,
+            uint timeStamp,
+            uint80 answeredInRound
+        ) = priceFeed.latestRoundData();
+        return price;
     }
 }
