@@ -7,5 +7,8 @@
     "ethereum-waffle": "^3.4.0",
     "ethers": "^5.4.0",
     "hardhat": "^2.4.1"
+  },
+  "dependencies": {
+    "chainlink": "^0.8.2"
   }
 }
